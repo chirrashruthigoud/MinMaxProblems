@@ -6,45 +6,38 @@ using System.Threading.Tasks;
 
 namespace MinMaxProblems
 {
-    public class MaxMin<T> where T : IComparable
+    public class Maximum<T> where T : IComparable
     {
-        public T fNumber, sNumber, thirdNumber;
+        public T[] value;
 
-        public MaxMin(T fNumber, T sNumber, T thirdNumber)
+        public Maximum(T[] value)
         {
-            this.fNumber = fNumber;
-            this.sNumber = sNumber;
-            this.thirdNumber = thirdNumber;
+            this.value = value;
         }
-        public static T Maximum(T fNumber, T sNumber, T thirdNumber)
+
+        public T[] Sort(T[] values)
         {
-            if ((fNumber.CompareTo(sNumber) > 0 && fNumber.CompareTo(thirdNumber) > 0) ||
-                (fNumber.CompareTo(sNumber) >= 0 && fNumber.CompareTo(thirdNumber) > 0) ||
-                (fNumber.CompareTo(sNumber) > 0 && fNumber.CompareTo(thirdNumber) >= 0))
-            {
-                return fNumber;
-            }
-
-            if ((sNumber.CompareTo(fNumber) > 0 && sNumber.CompareTo(thirdNumber) > 0) ||
-               (sNumber.CompareTo(fNumber) >= 0 && sNumber.CompareTo(thirdNumber) > 0) ||
-               (sNumber.CompareTo(fNumber) > 0 && sNumber.CompareTo(thirdNumber) >= 0))
-            {
-                return sNumber;
-            }
-
-
-            if ((thirdNumber.CompareTo(fNumber) > 0 && thirdNumber.CompareTo(sNumber) > 0) ||
-               (thirdNumber.CompareTo(fNumber) >= 0 && thirdNumber.CompareTo(sNumber) > 0) ||
-               (thirdNumber.CompareTo(fNumber) > 0 && thirdNumber.CompareTo(sNumber) >= 0))
-            {
-                return thirdNumber;
-            }
-            return fNumber;
+            Array.Sort(values);
+            return values;
         }
-        public T maxvalue()
+
+        public T MaxValue(params T[] values)
         {
-            T max = MaxMin<T>.Maximum(this.fNumber, this.sNumber, this.thirdNumber);
+            var sorted_values = Sort(values);
+            return sorted_values[^1];
+        }
+
+        public T MaxMethod()
+        {
+            var max = MaxValue(this.value);
             return max;
+        }
+
+
+        public void PrintMaxValue()
+        {
+            var max = MaxValue(this.value);
+            Console.WriteLine("Maximum value is " + max);
         }
 
     }

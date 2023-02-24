@@ -6,9 +6,9 @@ namespace MaxMin
     {
         public static void Main(string[] args)
         {
-            MaxMin<int> max = new MaxMin<int>(10, 20, 30);
-            int c = max.maxvalue();
-            Console.WriteLine(c);
+            int[] arr = { 112, 344, 432, 555, 678 };
+            Maximum<int> generic = new Maximum<int>(arr);
+            generic.PrintMaxValue();
 
         }
     }
