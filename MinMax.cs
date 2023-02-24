@@ -41,6 +41,11 @@ namespace MinMaxProblems
             }
             return fNumber;
         }
+        public T maxvalue()
+        {
+            T max = MaxMin<T>.Maximum(this.fNumber, this.sNumber, this.thirdNumber);
+            return max;
+        }
 
     }
 }
